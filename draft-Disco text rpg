@@ -1,0 +1,120 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+    int choice;
+    int monster_defence, monster_attack, monster_speed, health_points, attack, defence, damage, speed, monster_hp, monster_damage, init; // standard rpg hero and monster stats
+    attack =10;
+    defence=10;
+    speed=10;
+    monster_attack;
+    monster_defence;
+    monster_speed;
+
+        srand(unsigned(time(0)));
+        init = rand()%2+1; // initial action
+        health_points = rand()%20+60;
+        monster_hp = rand()%50+38;
+        if( init == 1)
+            {
+            cout <<" WELCOME TO THE DISCO HAUNTED HOUSE! You walk into a groovy spooky house with a disco ball..\n The floor lights up beneath you..\n A happenin' beat is playing softly through the walls..\n";
+            }
+        while(health_points > 0 || monster_hp > 0 )
+        {
+
+        cout<<" Your heart beats fast. You clench your weapon\n Armed with a baseball bat...\n All of a sudden you are attacked by a monster in neon hot pants!\n What do you do?\n 1-> Heavy Slugger Attack \n 2-> Fast Strike\n 3-> Defensive Boogie\n ";
+        do{cin >> choice;} while(choice >3 || choice < 1);
+
+
+
+
+    switch (choice)
+        {
+    case 1:
+        attack = rand()%17+5; // Heavy attk increases potential for damage but leaves hero open to attk
+        defence = rand()%8+5;
+        speed = rand ()%2;
+        break;
+
+    case 2:
+        attack = rand()%7+8; // Normal attack with other normal stats
+        defence = rand()%10+5;
+        speed = rand ()%10;
+        break;
+
+    case 3:
+        attack = rand()%5+5; // Defensive boogie increases defensive stats for hero
+        defence = rand()%15+5;
+        speed = rand()%10;
+        }
+
+            choice = rand()%3;
+
+                switch (choice)
+                { // Monster version of in-combat abilities
+            case 1:
+                monster_attack = rand()%19+5; // To reflect monster is slightly stronger in terms of raw strength
+                monster_defence = rand()%8+5;
+                monster_speed = rand()%2;
+                break;
+            case 2:
+                monster_attack = rand()%7+8;
+                monster_defence = rand()%10+5;
+                monster_speed = rand()%10;
+                break;
+            case 3:
+                monster_attack = rand()%5+5;
+                monster_defence = rand()%14+5;
+                monster_speed = rand()%9; // to reflect monster is slightly less agile
+                break;
+                }
+
+
+    monster_damage = (attack - monster_speed) - (monster_defence/attack); // calculating damage done to monster
+    if(monster_damage <0 )
+    {
+        monster_damage = 0;
+    }
+    monster_hp = monster_hp - monster_damage;
+    cout << "You did " << monster_damage << " damage on the enemy! \n";
+    cin.get();
+
+    if(monster_hp < 1)
+    {
+        cout << " You have killed the disco monster.. Out of sight baby! \n";
+        cin.get();
+        return 0;
+    }
+
+    
+    
+cout << "The disco monster now has " <<  monster_hp << "HP left!\n";
+damage = (monster_attack - speed) - (defence/monster_attack);          // calculating damage done to hero
+        if (damage < 0)
+            {
+                damage = 0;
+            }
+            health_points = health_points-damage;
+
+            cout << "The disco monster hit you with " << damage << "damage.\n";
+
+        if (health_points <1)
+            {
+    cout << "You died you fool! The monster killed you. It still has "<< monster_hp <<"HP left. It's boogying on your corpse!\n";
+    cin.get();
+    return 0;
+            }
+        }
+}
+
+
+
+
+
+
+
+
