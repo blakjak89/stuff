@@ -1,0 +1,236 @@
+#include <iostream>
+#include <string>
+#include<time.h>
+#include<stdlib.h>
+
+using namespace std;
+int dicestr;
+int dicedex;
+int dicesiz;
+int dicecon;
+
+int dicerollSTR() // 3D6 dice added together then multiplied by 5
+{
+    int dice1 = rand()%6+1;
+    int dice2 = rand()%6+1;
+    int dice3 = rand()%6+1;
+    dicestr = (dice1+dice2+dice3)*5;
+
+    return dicestr;
+}
+
+
+    int dicerollCON() // 3D6 dice added together then multiplied by 5
+    {
+        int dice1 = rand()%6+1;
+        int dice2 = rand()%6+1;
+        int dice3 = rand()%6+1;
+        dicecon = (dice1+dice2+dice3)*5;
+
+        return dicecon;
+    }
+
+
+            int dicerollSIZ()   // 2D6 added together with an additional 6 then multiplied by 5
+            {
+                int dice1 = rand()%6+1;
+                int dice2 = rand()%6+1;
+                dicesiz = ((dice1+dice2)+6)*5;
+
+                return dicesiz;
+            }
+
+
+                int dicerollDEX()       // 3D6 dice added together then multiplied by 5
+                {
+                int dice1 = rand()%6+1;
+                int dice2 = rand()%6+1;
+                int dice3 = rand()%6+1;
+                dicedex = (dice1+dice2+dice3)*5;
+
+                return dicedex;
+                }
+
+
+
+                    int dicerollAPP() // 3D6 dice added together then multiplied by 5
+                {
+                int dice1 = rand()%6+1;
+                int dice2 = rand()%6+1;
+                int dice3 = rand()%6+1;
+                int diceapp = (dice1+dice2+dice3)*5;
+
+                return diceapp;
+                }
+
+
+
+                    int dicerollINT()  // 2D6 added together with an additional 6 then multiplied by 5
+                {
+                int dice1 = rand()%6+1;
+                int dice2 = rand()%6+1;
+                int diceint = ((dice1+dice2)+6)*5;
+
+                return diceint;
+                }
+
+
+
+
+        int dicerollPOW()   // 3D6 dice added together then multiplied by 5
+    {
+        int dice1 = rand()%6+1;
+        int dice2 = rand()%6+1;
+        int dice3 = rand()%6+1;
+        int dicepow = (dice1+dice2+dice3)*5;
+
+        return dicepow;
+    }
+
+
+        int dicerollEDU()  // 2D6 added together with an additional 6 then multiplied by 5
+    {
+        int dice1 = rand()%6+1;
+        int dice2 = rand()%6+1;
+        int diceedu = ((dice1+dice2)+6)*5;
+
+        return diceedu;
+    }
+
+
+int dicerollLUC() // 3D6 dice added together then multiplied by 5
+{
+    int dice1 = rand()%6+1;
+    int dice2 = rand()%6+1;
+    int dice3 = rand()%6+1;
+    int diceluc = (dice1+dice2+dice3)*5;
+
+    return diceluc;
+}
+
+
+
+
+int main()
+{
+    string option;
+
+    srand(time(0)); // use current CPU time as random seed generator
+    cout << "Good evening detective!\nIt is time to set the stats for your character!\nPlease press 'r' to roll the dice!\n ";
+    cout <<endl;
+    cin >> option;
+
+        while (option == "R" || option == "r")
+    {
+        cout << ".....Strength: " << dicerollSTR() << endl;
+        cout << ".....Constitution: " << dicerollCON() << endl;
+        cout << ".....Dexterity: " << dicerollDEX() << endl;
+        cout << ".....Size: " << dicerollSIZ() << endl;
+        cout << ".....Appearance:" << dicerollAPP() << endl;
+        cout << ".....Intelligence: " << dicerollINT() << endl;
+        cout << ".....Power: " << dicerollPOW() << endl;
+        cout << ".....Education: " << dicerollEDU() << endl;
+        cout << ".....Luck: " << dicerollLUC() << endl;
+
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+
+        //various physical factors determine overall speed of the character
+
+
+
+
+
+
+
+    if (  dicesiz > dicedex   &&  dicesiz > dicestr  ) // if both dexterity strength is less than size
+        {
+            cout <<"Your Movement is 7  " << endl;
+        }
+
+
+
+
+        if(  dicesiz < dicedex   &&  dicesiz < dicestr  ) // if both dexterity and strength are greater than size
+                            {
+                                cout <<"Your Movement is 9 " << endl;
+                            }
+
+                                else if (  dicesiz <= dicedex   ||  dicesiz <= dicestr  ) // if dexterity and/or strength is more than or equal to size
+                                    {
+                                        cout <<"Your Movement is 8 " << endl;
+                                    }
+
+
+
+
+
+
+
+    cout<<"..."<<endl;
+    cout << "You have " << (dicesiz + dicecon) /10 << " hit points. " << endl;
+
+    cout<<"..."<<endl;
+
+//cout << dicesiz+dicestr <<endl;
+//size and strength of character added together and compared against table found in rulebook. determines damage bonus and build.
+
+    if(  (dicesiz+dicestr) <= 64)
+    {
+        cout << "Damage Bonus is -2 and Build is -2"<< endl;
+    }
+
+            if(  (dicesiz+dicestr) >= 65 && (dicesiz+dicestr) <= 84)
+        {
+            cout << "Damage Bonus is -1 and Build is -1"<< endl;
+        }
+
+
+                 if(  (dicesiz+dicestr) >= 85 && (dicesiz+dicestr) <= 124)
+                {
+                    cout << "Damage Bonus is 0 and Build is 0"<< endl;
+                }
+
+                         if(  (dicesiz+dicestr) >= 125 && (dicesiz+dicestr) <= 164)
+                    {
+                        cout << "Damage Bonus is +1D4 and Build is 1"<< endl;
+                    }
+
+
+                             if(  (dicesiz+dicestr) >= 165 && (dicesiz+dicestr) <= 204)
+                        {
+                            cout << "Damage Bonus is +1d6 and Build is 2"<< endl;
+                        }
+
+                                 if(  (dicesiz+dicestr) >= 205 && (dicesiz+dicestr) <= 284)
+                            {
+                            cout << "Damage Bonus is +2d6 and Build is 3"<< endl;
+                            }
+
+                                         if(  (dicesiz+dicestr) >= 285 && (dicesiz+dicestr) <= 364)
+                                    {
+                                    cout << "Damage Bonus is +3d6 and Build is 3"<< endl;
+                                    }
+
+
+                                                     if(  (dicesiz+dicestr) >= 365 && (dicesiz+dicestr) <= 444)
+                                                {
+                                                cout << "Damage Bonus is +4d6 and Build is 4"<< endl;
+                                                }
+
+
+                                                         if(  (dicesiz+dicestr) >= 445 && (dicesiz+dicestr) <= 524)
+                                                    {
+                                                    cout << "Damage Bonus is 51d6 and Build is 5"<< endl;
+                                                    }
+    cout << endl;
+    cout << "\nYou now have your stats for a new character detective! Best of luck investigating the mystery!\n";
+    cout << "\n\nEnter \"R\" to reroll.\n";
+    cout << "Enter any other letter to quit.\n";
+    cin >> option;
+    }
+
+    return 0;
+}
